@@ -24,11 +24,11 @@ const galleryMarkup = createGalleryItems(galleryItems);
 
 galleryWrapper.insertAdjacentHTML('beforeend', galleryMarkup);
 
-galleryWrapper.addEventListener('click', imageOriginalSizeHandler);
+galleryWrapper.addEventListener('click', firstGalleryHandler);
 
 console.log(galleryWrapper);
 
-function imageOriginalSizeHandler(event) {
+function firstGalleryHandler(event) {
     event.preventDefault();
     if (!event.target.classList.contains('gallery__image')) {
         return;
