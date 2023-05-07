@@ -34,13 +34,19 @@ function firstGalleryHandler(event) {
         return;
     }
 
-    const instance = basicLightbox.create(`<img src="${event.target.dataset.source}" width="1280" height="855">`);
+    const instance = basicLightbox.create(`<img src="${event.target.dataset.source}" width="1280" height="855">`, {
+        onShow: () => {window.addEventListener('keydown', onEscClick);},
+        onClose: () => {window.removeEventListener('keydown', onEscClick);},
+    });
     instance.show();
 
-    galleryWrapper.addEventListener('keydown', (event) => {
+    function onEscClick(event) {
         if (event.code === 'Escape') {
+            window.removeEventListener('keydown', onEscClick);
             instance.close();
         }
-    })
+    }
 }
+
+
 
